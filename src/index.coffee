@@ -442,7 +442,7 @@ class Payment
 
       digits = (num + '').split('').reverse()
 
-      num.length in card.length and digits[0] != 0 and
+      num.length in card.length and digits[0] > 0 and
         (card.luhn is false or luhnCheck(num))
     validateCardExpiry: (month, year) ->
       # Allow passing an object
