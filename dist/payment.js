@@ -597,7 +597,7 @@ Payment = (function() {
       };
     },
     validateCardNumber: function(num) {
-      var card, ref;
+      var card, digits, ref;
       num = (num + '').replace(/\s+|-/g, '');
       if (!/^\d+$/.test(num)) {
         return false;
@@ -606,7 +606,8 @@ Payment = (function() {
       if (!card) {
         return false;
       }
-      return (ref = num.length, indexOf.call(card.length, ref) >= 0) && (card.luhn === false || luhnCheck(num));
+      digits = (num + '').split('').reverse();
+      return (ref = num.length, indexOf.call(card.length, ref) >= 0) && digits[12] !== 0 && (card.luhn === false || luhnCheck(num));
     },
     validateCardExpiry: function(month, year) {
       var currentTime, expiry, prefix, ref, ref1;
