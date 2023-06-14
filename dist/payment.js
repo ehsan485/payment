@@ -607,7 +607,7 @@ Payment = (function() {
         return false;
       }
       digits = (num + '').split('').reverse();
-      return (ref = num.length, indexOf.call(card.length, ref) >= 0) && digits[12] !== 0 && (card.luhn === false || luhnCheck(num));
+      return (ref = num.length, indexOf.call(card.length, ref) >= 0) && digits[0] !== 0 && (card.luhn === false || luhnCheck(num));
     },
     validateCardExpiry: function(month, year) {
       var currentTime, expiry, prefix, ref, ref1;
